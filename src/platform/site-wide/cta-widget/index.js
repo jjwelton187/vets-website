@@ -147,6 +147,7 @@ export class CallToActionWidget extends React.Component {
     }
 
     if (this.isAccessible()) {
+      // TODO add a flag here for cerner vs non-cerner
       return (
         <OpenMyHealtheVet
           serviceDescription={this._serviceDescription}
@@ -408,6 +409,7 @@ CallToActionWidget.defaultProps = {
 };
 
 const mapStateToProps = state => {
+  // TODO: grab the TBD cerner identifier from the user object here
   const profile = selectProfile(state);
   const {
     loading,
