@@ -195,18 +195,8 @@ const formConfig = {
             [primaryCaregiverFields.alternativePhoneNumber]: alternativePhoneNumberUI,
             [primaryCaregiverFields.email]: emailUI,
             [primaryCaregiverFields.vetRelationship]: vetRelationshipUI,
-            'view:booksRead': {
-              'ui:title':
-                'Check all that the Primary Caregiver is currently enrolled in',
-              'ui:description': '',
-              [primaryCaregiverFields.medicaidEnrolled]:
-                primaryCaregiverUI.medicaidEnrolledUI,
-              [primaryCaregiverFields.medicareEnrolled]:
-                primaryCaregiverUI.medicareEnrolledUI,
-              [primaryCaregiverFields.tricareEnrolled]:
-                primaryCaregiverUI.tricareEnrolledUI,
-              [primaryCaregiverFields.champvaEnrolled]:
-                primaryCaregiverUI.champvaEnrolledUI,
+            'view:primaryHealthCareEnrollment': {
+              ...primaryCaregiverUI['view:primaryHealthCareEnrollment'],
             },
             [primaryCaregiverFields.otherHealthInsurance]:
               primaryCaregiverUI.otherHealthInsuranceUI,
@@ -229,7 +219,8 @@ const formConfig = {
               [primaryCaregiverFields.email]: primaryCaregiverProps.email,
               [primaryCaregiverFields.vetRelationship]:
                 primaryCaregiverProps.vetRelationship,
-              'view:booksRead': {
+              // TODO need to update this in vets-JSON-schema repo
+              'view:primaryHealthCareEnrollment': {
                 type: 'object',
                 properties: {
                   [primaryCaregiverFields.medicaidEnrolled]:

@@ -108,18 +108,22 @@ export default {
         widgetClassNames: 'usa-input-medium',
       },
     },
-
-    medicaidEnrolledUI: {
-      'ui:title': 'Enrolled in Medicaid?',
-    },
-    medicareEnrolledUI: {
-      'ui:title': 'Enrolled in Medicare?',
-    },
-    tricareEnrolledUI: {
-      'ui:title': 'Enrolled in Tricare?',
-    },
-    champvaEnrolledUI: {
-      'ui:title': 'Enrolled in CHAMPVA?',
+    'view:primaryHealthCareEnrollment': {
+      'ui:title':
+        'Check all that the Primary Caregiver is currently enrolled in',
+      'ui:description': '',
+      [primaryCaregiverFields.medicaidEnrolled]: {
+        'ui:title': 'Enrolled in Medicaid?',
+      },
+      [primaryCaregiverFields.medicareEnrolled]: {
+        'ui:title': 'Enrolled in Medicare?',
+      },
+      [primaryCaregiverFields.tricareEnrolled]: {
+        'ui:title': 'Enrolled in Tricare?',
+      },
+      [primaryCaregiverFields.champvaEnrolled]: {
+        'ui:title': 'Enrolled in CHAMPVA?',
+      },
     },
     otherHealthInsuranceUI: {
       'ui:title': 'Other Health Insurance?',
