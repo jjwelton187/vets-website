@@ -20,6 +20,13 @@ import recordEvent from 'platform/monitoring/record-event';
 
 import * as VET360 from '../constants';
 
+import {
+  isFailedTransaction,
+  isPendingTransaction,
+} from 'vet360/util/transactions';
+
+import Vet360EditModalErrorMessage from 'vet360/components/base/Vet360EditModalErrorMessage';
+
 class AddressValidationModal extends React.Component {
   componentWillUnmount() {
     focusElement(`#${this.props.addressValidationType}-edit-link`);
@@ -197,6 +204,10 @@ class AddressValidationModal extends React.Component {
       addressValidationError,
       resetAddressValidation,
       confirmedSuggestions,
+      transaction,
+      transactionRequest,
+      title,
+      clearErrors,
     } = this.props;
 
     const resetDataAndCloseModal = () => {
@@ -216,6 +227,10 @@ class AddressValidationModal extends React.Component {
 
     const shouldShowSuggestions = confirmedSuggestions.length > 0;
 
+    const error =
+      transactionRequest?.error ||
+      (isFailedTransaction(transaction) ? {} : null);
+
     return (
       <Modal
         title={
@@ -227,6 +242,15 @@ class AddressValidationModal extends React.Component {
         onClose={resetDataAndCloseModal}
         visible
       >
+        {error && (
+          <div className="vads-u-margin-bottom--1">
+            <Vet360EditModalErrorMessage
+              title={title}
+              error={error}
+              clearErrors={clearErrors}
+            />
+          </div>
+        )}
         <AlertBox
           className="vads-u-margin-bottom--1"
           status="warning"
@@ -260,14 +284,16 @@ class AddressValidationModal extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const { transaction } = ownProps;
   const addressValidationType =
     state.vet360.addressValidation.addressValidationType;
 
   return {
     analyticsSectionName: VET360.ANALYTICS_FIELD_MAP[addressValidationType],
     isLoading:
-      state.vet360.fieldTransactionMap[addressValidationType]?.isPending,
+      state.vet360.fieldTransactionMap[addressValidationType]?.isPending ||
+      isPendingTransaction(transaction),
     addressValidationError:
       state.vet360.addressValidation.addressValidationError,
     suggestedAddresses: state.vet360.addressValidation.suggestedAddresses,

@@ -21,6 +21,7 @@ export default class Vet360Transaction extends React.Component {
   render() {
     const {
       id,
+      isModalOpen,
       children,
       refreshTransaction,
       title,
@@ -29,7 +30,7 @@ export default class Vet360Transaction extends React.Component {
     } = this.props;
 
     const method = transactionRequest ? transactionRequest.method : 'PUT';
-    const hasError = transaction && isFailedTransaction(transaction);
+    const hasError = isFailedTransaction(transaction);
     const classes = classNames('vet360-profile-field-content', {
       'usa-input-error': hasError,
     });
@@ -37,13 +38,15 @@ export default class Vet360Transaction extends React.Component {
     return (
       <div className={classes}>
         {hasError && <Vet360TransactionInlineErrorMessage {...this.props} />}
-        {transaction && isPendingTransaction(transaction) ? (
+        {isPendingTransaction(transaction) ? (
           <div id={id}>
             <Vet360TransactionPending
               title={title}
               refreshTransaction={refreshTransaction}
               method={method}
-            />
+            >
+              {isModalOpen && children}
+            </Vet360TransactionPending>
           </div>
         ) : (
           children
