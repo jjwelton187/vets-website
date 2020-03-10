@@ -30,7 +30,7 @@ export const primaryCaregiverFields = {
   otherHealthInsuranceName: 'primaryOtherHealthInsuranceName',
   primaryPhoneNumber: 'primaryPrimaryPhoneNumber',
   ssn: 'primarySsn',
-  tricareEnrolled: 'primaryMedicareEnrolled',
+  tricareEnrolled: 'primaryTricareEnrolled',
   vetRelationship: 'primaryVetRelationship',
 };
 

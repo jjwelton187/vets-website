@@ -195,14 +195,19 @@ const formConfig = {
             [primaryCaregiverFields.alternativePhoneNumber]: alternativePhoneNumberUI,
             [primaryCaregiverFields.email]: emailUI,
             [primaryCaregiverFields.vetRelationship]: vetRelationshipUI,
-            [primaryCaregiverFields.medicaidEnrolled]:
-              primaryCaregiverUI.medicaidEnrolledUI,
-            [primaryCaregiverFields.medicareEnrolled]:
-              primaryCaregiverUI.medicareEnrolledUI,
-            [primaryCaregiverFields.tricareEnrolled]:
-              primaryCaregiverUI.tricareEnrolledUI,
-            [primaryCaregiverFields.champvaEnrolled]:
-              primaryCaregiverUI.champvaEnrolledUI,
+            'view:booksRead': {
+              'ui:title':
+                'Check all that the Primary Caregiver is currently enrolled in',
+              'ui:description': '',
+              [primaryCaregiverFields.medicaidEnrolled]:
+                primaryCaregiverUI.medicaidEnrolledUI,
+              [primaryCaregiverFields.medicareEnrolled]:
+                primaryCaregiverUI.medicareEnrolledUI,
+              [primaryCaregiverFields.tricareEnrolled]:
+                primaryCaregiverUI.tricareEnrolledUI,
+              [primaryCaregiverFields.champvaEnrolled]:
+                primaryCaregiverUI.champvaEnrolledUI,
+            },
             [primaryCaregiverFields.otherHealthInsurance]:
               primaryCaregiverUI.otherHealthInsuranceUI,
             [primaryCaregiverFields.otherHealthInsuranceName]:
@@ -224,14 +229,19 @@ const formConfig = {
               [primaryCaregiverFields.email]: primaryCaregiverProps.email,
               [primaryCaregiverFields.vetRelationship]:
                 primaryCaregiverProps.vetRelationship,
-              [primaryCaregiverFields.medicaidEnrolled]:
-                primaryCaregiverProps.medicaidEnrolled,
-              [primaryCaregiverFields.medicareEnrolled]:
-                primaryCaregiverProps.medicareEnrolled,
-              [primaryCaregiverFields.tricareEnrolled]:
-                primaryCaregiverProps.tricareEnrolled,
-              [primaryCaregiverFields.champvaEnrolled]:
-                primaryCaregiverProps.champvaEnrolled,
+              'view:booksRead': {
+                type: 'object',
+                properties: {
+                  [primaryCaregiverFields.medicaidEnrolled]:
+                    primaryCaregiverProps.medicaidEnrolled,
+                  [primaryCaregiverFields.medicareEnrolled]:
+                    primaryCaregiverProps.medicareEnrolled,
+                  [primaryCaregiverFields.tricareEnrolled]:
+                    primaryCaregiverProps.tricareEnrolled,
+                  [primaryCaregiverFields.champvaEnrolled]:
+                    primaryCaregiverProps.champvaEnrolled,
+                },
+              },
               [primaryCaregiverFields.otherHealthInsurance]: {
                 type: 'boolean',
               },
